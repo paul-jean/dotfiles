@@ -1,1 +1,5 @@
-# Add your local tmux config here
+# use C-p for prefix
+set-option -g prefix C-p
+unbind-key C-p
+bind-key C-p send-prefix
+set -g base-index 1

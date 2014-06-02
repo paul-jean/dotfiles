@@ -1,10 +1,15 @@
 set nocursorline " don't highlight current line
+set nowrap
 
 " keyboard shortcuts
-inoremap jj <ESC>
+" inoremap jj <ESC>
+
+" set ttimeout
+" set timeoutlen=1000
+" set ttimeoutlen=0
 
 " highlight search
-"set hlsearch
+set hlsearch
 "nmap <leader>hl :let @/ = ""<CR>
 
 " gui settings
@@ -31,3 +36,36 @@ function! s:RemoveConflictingAlignMaps()
 endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+" Don't use unnamed clipboard if inside tmux:
+" http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
+
+autocmd Filetype clojure RainbowParenthesesActivate
+autocmd Filetype clojure RainbowParenthesesLoadRound
+autocmd Filetype clojure RainbowParenthesesLoadSquare
+autocmd Filetype clojure RainbowParenthesesLoadBraces
+
+" http://www.deepbluelambda.org/programming/clojure/programming-clojure-with-vim-2013-edition
+let g:rbpt_colorpairs = [
+  \ [ '13', '#6c71c4'],
+  \ [ '5',  '#d33682'],
+  \ [ '1',  '#dc322f'],
+  \ [ '9',  '#cb4b16'],
+  \ [ '3',  '#b58900'],
+  \ [ '2',  '#859900'],
+  \ [ '6',  '#2aa198'],
+  \ [ '4',  '#268bd2'],
+  \ ]
+ 
+" Enable rainbow parentheses for all buffers
+augroup rainbow_parentheses
+  au!
+  au VimEnter * RainbowParenthesesActivate
+  au BufEnter * RainbowParenthesesLoadRound
+  au BufEnter * RainbowParenthesesLoadSquare
+  au BufEnter * RainbowParenthesesLoadBraces
+augroup END
+

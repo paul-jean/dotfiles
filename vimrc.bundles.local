@@ -1,0 +1,7 @@
+Bundle 'othree/html5.vim'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fireplace'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-classpath.git'
+Bundle 'mxw/vim-jsx'
