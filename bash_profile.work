@@ -1,0 +1,38 @@
+pathadd ()
+# http://snippets.dzone.com/posts/show/4821
+{
+    _folder=$1
+    echo " $PATH " | sed 's/:/ /g' | grep " $_folder " > /dev/null
+    [ $? -ne 0 ] && [ -d $_folder ] && PATH=$PATH:$_folder
+    export PATH
+}
+
+# alias
+alias ls='ls -hFG'  # add colors for filetype recognition
+alias vi='vim'
+alias lt='ls -ltrh'
+
+# prompt
+function redhat {
+PS1="[\u@\h: \W]\\$ "
+PS2="> "
+}
+redhat
+
+# path
+export PATH=~/bin:/usr/local/bin:$PATH
+pathadd /usr/local/share/npm/bin
+pathadd /usr/local/share/python
+
+# enable terminal colors
+# http://noiseandheat.com/blog/2011/12/os-x-lion-terminal-colours/
+export CLICOLOR=1
+# https://github.com/seebi/dircolors-solarized/issues/10
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+# export LSCOLORS=Exfxcxdxbxegedabagacad
+# use x11 as the default Gnuplot terminal:
+# http://www.miscdebris.net/blog/2009/09/16/install-gnuplot-on-mac-os-x/
+export GNUTERM=x11
+
+pathadd $HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
