@@ -19,11 +19,6 @@ PS2="> "
 }
 redhat
 
-# path
-export PATH=~/bin:/usr/local/bin:$PATH
-pathadd /usr/local/share/npm/bin
-pathadd /usr/local/share/python
-
 # enable terminal colors
 # http://noiseandheat.com/blog/2011/12/os-x-lion-terminal-colours/
 export CLICOLOR=1
@@ -34,5 +29,3 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 # http://www.miscdebris.net/blog/2009/09/16/install-gnuplot-on-mac-os-x/
 export GNUTERM=x11
 
-pathadd $HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
