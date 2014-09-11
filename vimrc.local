@@ -4,9 +4,9 @@ set nowrap
 " keyboard shortcuts
 " inoremap jj <ESC>
 
-" set ttimeout
-" set timeoutlen=1000
-" set ttimeoutlen=0
+set ttimeout
+set timeoutlen=10
+set ttimeoutlen=0
 
 " highlight search
 set hlsearch
@@ -69,3 +69,20 @@ augroup rainbow_parentheses
   au BufEnter * RainbowParenthesesLoadBraces
 augroup END
 
+set noswapfile
+
+"Set the default indent rules.
+"See ~/.vim/after/ftplugin for file-specific indent rules.
+filetype plugin indent on
+set autoindent
+set tabstop=8
+set shiftwidth=8
+set softtabstop=8
+set noexpandtab
+
+"Set default text width to 80.
+setl tw=80
+
+" https://github.com/hallettj/jslint.vim/issues/38
+hi clear SpellBad
+hi SpellBad cterm=underline
