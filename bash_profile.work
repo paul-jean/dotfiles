@@ -12,6 +12,26 @@ alias ls='ls -hFG'  # add colors for filetype recognition
 alias vi='vim'
 alias lt='ls -ltrh'
 
+# edit a remote file in vim
+# use a dedicated ssh tunnel (?) for the session, to speed up scp writes
+# http://erikzaadi.com/2013/03/07/fast-remote-editing-with-vim/
+vimscp ()
+{
+  echo "vim-scp ..."
+  if [ $# -ne 2 ]; then
+    echo "usage : `basename $0` user@host /path"
+    exit 1
+  fi
+  COMMAND="ssh $1 -f -N -o ControlMaster=auto -o ControlPath=/tmp/%r@%h:%p"
+  echo "opening ssh tunnel.."
+  $COMMAND || exit $?
+  echo "ssh tunnel active, opening vim.."
+  vim -c ":set buftype=\"\"" scp://$1/$2
+  echo "closing ssh tunnel.."
+  ps -ef | grep "$COMMAND" | grep -v grep | awk '{print $2}' | xargs kill -9
+  echo "Great Success!"
+}
+
 # prompt
 function redhat {
 PS1="[\u@\h: \W]\\$ "

@@ -3,3 +3,7 @@ set-option -g prefix C-p
 unbind-key C-p
 bind-key C-p send-prefix
 set -g base-index 1
+
+# reduce the delay when hitting ESC:
+# http://superuser.com/questions/252214/slight-delay-when-switching-modes-in-vim-using-tmux-or-screen
+set -sg escape-time 0

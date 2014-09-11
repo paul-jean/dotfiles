@@ -4,9 +4,14 @@ set nowrap
 " keyboard shortcuts
 " inoremap jj <ESC>
 
+" Reduce the delay when hitting ESC
+" http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 " set ttimeout
-" set timeoutlen=1000
-" set ttimeoutlen=0
+" set timeoutlen=10
+" set ttimeoutlen=10
+" NOTE: this doesn't reduce the timeout under tmux, so use a tmux setting
+" instead:
+" http://superuser.com/questions/252214/slight-delay-when-switching-modes-in-vim-using-tmux-or-screen
 
 " highlight search
 set hlsearch
@@ -59,7 +64,7 @@ let g:rbpt_colorpairs = [
   \ [ '6',  '#2aa198'],
   \ [ '4',  '#268bd2'],
   \ ]
- 
+
 " Enable rainbow parentheses for all buffers
 augroup rainbow_parentheses
   au!
@@ -69,3 +74,11 @@ augroup rainbow_parentheses
   au BufEnter * RainbowParenthesesLoadBraces
 augroup END
 
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+set listchars=tab:▸\ ,trail:▫
+syntax clear SpecialKey
+hi SpecialKey ctermfg=11 ctermbg=8
+
+" highlight the current line
+" http://vim.wikia.com/wiki/Highlight_current_line
+set cursorline
