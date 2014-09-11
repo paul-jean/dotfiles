@@ -82,3 +82,20 @@ hi SpecialKey ctermfg=11 ctermbg=8
 " highlight the current line
 " http://vim.wikia.com/wiki/Highlight_current_line
 set cursorline
+set noswapfile
+
+"Set the default indent rules.
+"See ~/.vim/after/ftplugin for file-specific indent rules.
+filetype plugin indent on
+set autoindent
+set tabstop=8
+set shiftwidth=8
+set softtabstop=8
+set noexpandtab
+
+"Set default text width to 80.
+setl tw=80
+
+" https://github.com/hallettj/jslint.vim/issues/38
+hi clear SpellBad
+hi SpellBad cterm=underline
