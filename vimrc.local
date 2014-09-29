@@ -1,5 +1,4 @@
 set cursorline " highlight current line
-set nowrap
 
 " keyboard shortcuts
 " inoremap jj <ESC>
@@ -93,9 +92,15 @@ set shiftwidth=8
 set softtabstop=8
 set noexpandtab
 
-"Set default text width to 80.
-setl tw=80
+" Line breaking and formatting
+set tw=0
+set fo=croq
+set nowrap
 
 " https://github.com/hallettj/jslint.vim/issues/38
 hi clear SpellBad
 hi SpellBad cterm=underline
+
+" delay on ESC
+set timeoutlen=10 ttimeoutlen=0
+
