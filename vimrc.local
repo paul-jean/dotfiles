@@ -1,6 +1,3 @@
-set nocursorline " don't highlight current line
-set nowrap
-
 " keyboard shortcuts
 " inoremap jj <ESC>
 
@@ -12,14 +9,9 @@ set ttimeoutlen=0
 set hlsearch
 "nmap <leader>hl :let @/ = ""<CR>
 
-" gui settings
-if (&t_Co == 256 || has('gui_running'))
-  if ($TERM_PROGRAM == 'iTerm.app')
-    colorscheme solarized
-  else
-    colorscheme desert
-  endif
-endif
+" use solarized dark colors:
+set background=dark
+colorscheme solarized
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
@@ -80,8 +72,14 @@ set shiftwidth=8
 set softtabstop=8
 set noexpandtab
 
-"Set default text width to 80.
-setl tw=80
+" Line breaking and formatting
+set tw=0
+set fo=croq
+set nowrap
+
+" highlight the current line
+" http://vim.wikia.com/wiki/Highlight_current_line
+set cursorline
 
 " https://github.com/hallettj/jslint.vim/issues/38
 hi clear SpellBad
