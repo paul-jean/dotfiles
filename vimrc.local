@@ -47,6 +47,11 @@ if $TMUX == ''
     set clipboard+=unnamed
 endif
 
+" Add clipboard copy-paste shortcuts C-c and C-v
+" http://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-using-vim
+vnoremap <C-c> :w !pbcopy<CR><CR>
+vnoremap <C-v> :r !pbpaste<CR><CR>
+
 autocmd Filetype clojure RainbowParenthesesActivate
 autocmd Filetype clojure RainbowParenthesesLoadRound
 autocmd Filetype clojure RainbowParenthesesLoadSquare

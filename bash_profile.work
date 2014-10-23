@@ -8,6 +8,7 @@ pathadd ()
 }
 
 pathadd ~/bin
+export PATH="/usr/local/bin:$PATH"
 
 # alias
 alias ls='ls -hFG'  # add colors for filetype recognition
