@@ -79,6 +79,17 @@ set listchars=tab:▸\ ,trail:▫
 syntax clear SpecialKey
 hi SpecialKey ctermfg=11 ctermbg=8
 
+" http://tedlogan.com/techblog3.html
+" Number of columns to insert when hitting tab:
+set softtabstop=4
+" Number of columns to indent:
+set shiftwidth=4
+" Expand tabs to spaces:
+set expandtab
+" Number of columns per tab character if they appear in the file:
+set tabstop=4
+
+
 " highlight the current line
 " http://vim.wikia.com/wiki/Highlight_current_line
 set cursorline
