@@ -35,3 +35,6 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 export GNUTERM=x11
 
 umask 002
+
+export GRUNT_LR_PORT="10181"
+export LR_PORT="10181"

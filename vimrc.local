@@ -1,13 +1,14 @@
+let mapleader = ","
 " keyboard shortcuts
 " inoremap jj <ESC>
 
-set ttimeout
-set timeoutlen=10
-set ttimeoutlen=0
+set timeout
+set timeoutlen=1000 " mapping delay
+set ttimeoutlen=100 " keycode delay
 
 " highlight search
-set hlsearch
-"nmap <leader>hl :let @/ = ""<CR>
+" set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>
 
 " use solarized dark colors:
 set background=dark
@@ -84,3 +85,8 @@ set cursorline
 " https://github.com/hallettj/jslint.vim/issues/38
 hi clear SpellBad
 hi SpellBad cterm=underline
+
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+set listchars=tab:▸\ ,trail:▫
+syntax clear SpecialKey
+hi SpecialKey ctermfg=11 ctermbg=8
