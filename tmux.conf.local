@@ -8,3 +8,7 @@ set -g base-index 1
 # time in vim:
 # http://superuser.com/questions/252214/slight-delay-when-switching-modes-in-vim-using-tmux-or-screen/252717#252717
 set -sg escape-time 0
+
+# Automatically renumber windows when one is closed:
+# http://unix.stackexchange.com/questions/21742/renumbering-windows-in-tmux
+set-option -g renumber-windows on
