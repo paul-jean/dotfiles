@@ -99,4 +99,4 @@ set autochdir
 " Make ctrl-P search from the project root:
 " https://github.com/kien/ctrlp.vim
 " http://stackoverflow.com/questions/8225468/how-to-set-a-global-vim-project-root-path
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'ra'
