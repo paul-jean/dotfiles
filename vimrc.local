@@ -100,3 +100,20 @@ set autochdir
 " https://github.com/kien/ctrlp.vim
 " http://stackoverflow.com/questions/8225468/how-to-set-a-global-vim-project-root-path
 let g:ctrlp_working_path_mode = 'ra'
+
+" Open QuickFix window after doing a grep:
+" https://github.com/tpope/vim-fugitive
+autocmd QuickFixCmdPost *grep* cwindow
+
+" From the QuickFix window, open new files in
+" a new tab, using an existing tab if the file
+" is already open:
+" http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab
+set switchbuf+=usetab
+
+" Disable whitespace warnings in vim airline
+" https://github.com/bling/vim-airline/blob/master/doc/airline.txt
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+let g:airline_section_warning = ''
