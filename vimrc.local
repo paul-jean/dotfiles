@@ -109,7 +109,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 " a new tab, using an existing tab if the file
 " is already open:
 " http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab
-set switchbuf+=usetab
+" set switchbuf+=usetab
 
 " Disable whitespace warnings in vim airline
 " https://github.com/bling/vim-airline/blob/master/doc/airline.txt
@@ -117,3 +117,7 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t'
 let g:airline_section_warning = ''
+
+" Disable code folding
+" http://stackoverflow.com/questions/5017009/confusion-about-vim-folding-how-to-disable
+set nofoldenable
