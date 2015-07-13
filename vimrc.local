@@ -101,3 +101,16 @@ setl tw=80
 " https://github.com/hallettj/jslint.vim/issues/38
 hi clear SpellBad
 hi SpellBad cterm=underline
+
+" Disable whitespace warnings in vim airline
+" https://github.com/bling/vim-airline/blob/master/doc/airline.txt
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+let g:airline_section_warning = ''
+
+" highlight search
+set hlsearch
+" leader + space to clear search highligh
+nnoremap <leader><space> :nohlsearch<CR>
+
