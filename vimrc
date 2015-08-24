@@ -4,6 +4,11 @@ set nocompatible
 " enable syntax highlighting
 syntax enable
 
+" map the leader key before installing bundles
+" http://vimdoc.sourceforge.net/htmldoc/map.html#mapleader
+" http://stackoverflow.com/questions/8189055/vim-and-gvim-leader-key-not-working
+let mapleader = ','
+
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
@@ -51,7 +56,6 @@ if exists('$TMUX')  " Support resizing in tmux
 endif
 
 " keyboard shortcuts
-let mapleader = ','
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k

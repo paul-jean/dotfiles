@@ -107,7 +107,7 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 
 " delay on ESC
-set timeoutlen=10 ttimeoutlen=0
+set timeoutlen=10 ttimeoutlen=10
 
 " use mouse for visual selection
 set mouse=a
