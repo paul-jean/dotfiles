@@ -11,7 +11,7 @@ pathadd ()
 alias ls='ls -hFG'  # add colors for filetype recognition
 alias vi='vim'
 alias lt='ls -ltrh'
-alias postgres='postgres -D /usr/local/var/postgres'
+# alias postgres='postgres -D /usr/local/var/postgres'
 
 # prompt
 function redhat {
