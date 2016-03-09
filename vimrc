@@ -11,7 +11,6 @@ set rtp+=~/.vim/bundle/vundle/
 " call vundle#rc()
 
 call vundle#begin()
-    Plugin 'gmarik/vundle'
     " install Vundle bundles
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
