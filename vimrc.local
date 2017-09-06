@@ -109,6 +109,10 @@ let g:airline_section_b = '%{getcwd()}'
 let g:airline_section_c = '%t'
 let g:airline_section_warning = ''
 
+" airline fonts
+let g:airline_powerline_fonts=1
+let g:airline_theme='solarized'
+
 " highlight search
 set hlsearch
 " leader + space to clear search highligh
@@ -120,4 +124,32 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-let g:airline_theme='solarized'
+set tags=tags;
+set autochdir
+
+" SOX label on status line:
+" https://github.etsycorp.com/Engineering/vim-rodeo
+set statusline+=%#warningmsg#
+set statusline+=\ %{rodeo#statusline()}
+set statusline+=%*
+
+autocmd BufWritePost /**/deployinator/* :silent !touch /usr/etsy/deployinator/tmp/restart.txt
+
+set mouse-=a
+
+" leader + n to jump to file in nerdtree
+" http://stackoverflow.com/questions/7692233/nerdtree-reveal-file-in-tree
+nmap <leader>n :NERDTreeFind<CR>
+
+" let g:hound_base_url = \"http://hound.etsycorp.com\"
+" nnoremap <leader>a :HoundQF<space>
+" vnoremap <leader>a y:HoundQF<space><C-R>"<CR>
+" nnoremap <LEADER>c :cclose<cr>
+" nnoremap <LEADER>o :copen<cr>
+
+" this is causing the control key alone to search for stuff under the cursor:
+" nnoremap <C-[> :Ag <cword> ~/development/Etsyweb/<CR>
+
+" https://github.etsycorp.com/tschneiter/vim-github
+" Link to file in github with lines hilighted
+map <leader>g :Github l<CR>
