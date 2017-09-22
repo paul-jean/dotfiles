@@ -23,7 +23,6 @@ redhat
 # path
 export PATH=~/bin:/usr/local/bin:$PATH
 pathadd /usr/local/share/npm/bin
-pathadd /usr/local/share/python
 
 # enable terminal colors
 # http://noiseandheat.com/blog/2011/12/os-x-lion-terminal-colours/
@@ -40,7 +39,7 @@ export GNUTERM=x11
 
 # java home
 # http://stackoverflow.com/questions/6588390/where-is-java-home-on-osx-lion-10-7-mountain-lion-10-8-or-mavericks-10-9
-export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
 
 # hadoop configs
 export HADOOP_HOME=$HOME/Library/Hadoop
@@ -51,3 +50,12 @@ pathadd $HBASE_HOME/bin
 
 pathadd $HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+pathadd "$HOME/.node/bin"
+
+# lua / torch:
+# https://www.jeffreythompson.org/blog/2016/03/25/torch-rnn-mac-install/
+pathadd $HOME/code/torch/install/bin
+
+# use python2 installed by homebrew:
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
