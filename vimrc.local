@@ -95,8 +95,14 @@ set tabstop=4
 set cursorline
 set noswapfile
 
-"Set default text width to 80.
+" Set default text width to 80.
 setl tw=80
+set colorcolumn=80
+
+" Show highlight ruler at the 80th character:
+" http://superuser.com/questions/249779/how-to-setup-a-line-length-marker-in-vim-gvim
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%81v', 100)
 
 " https://github.com/hallettj/jslint.vim/issues/38
 hi clear SpellBad
@@ -114,3 +120,6 @@ set hlsearch
 " leader + space to clear search highligh
 nnoremap <leader><space> :nohlsearch<CR>
 
+" quicker escaping
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
+" inoremap jj <ESC>
