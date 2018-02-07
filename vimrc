@@ -6,18 +6,16 @@ syntax enable
 
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
-filetype off
+filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
 call vundle#begin()
+    " Plugin 'VundleVim/Vundle.vim'
     " install Vundle bundles
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
         source ~/.vimrc.bundles.local
     endif
-call vundle#end()
-
 call vundle#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
@@ -115,6 +113,10 @@ endif
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
+
+" will this fix PluginInstall?
+" https://github.com/VundleVim/Vundle.vim/issues/175
+set shell=/bin/bash
 
 " Go crazy!
 if filereadable(expand("~/.vimrc.local"))

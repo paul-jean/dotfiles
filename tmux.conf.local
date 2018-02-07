@@ -16,3 +16,7 @@ set-option -g renumber-windows on
 set -g mode-mouse off
 
 set -g default-terminal "screen-256color"
+
+# increase history lines
+# https://stackoverflow.com/questions/18760281/how-to-increase-scrollback-buffer-size-in-tmux
+set-option -g history-limit 20000

@@ -11,7 +11,9 @@ pathadd ()
 alias ls='ls -hFG'  # add colors for filetype recognition
 alias vi='vim'
 alias lt='ls -ltrh'
+alias review='review -i -a r-and-l-engagement -c rl-engagement-eng'
 # alias postgres='postgres -D /usr/local/var/postgres'
+alias web='cd $HOME/development/Etsyweb'
 
 # prompt
 # function redhat {
@@ -152,3 +154,5 @@ export EDITOR=vim
 #
 
 eval $(~/development/bin/dbaliases)
+
+

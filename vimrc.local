@@ -1,4 +1,3 @@
-set nocursorline " don't highlight current line
 set nowrap
 
 " keyboard shortcuts
@@ -7,8 +6,8 @@ set nowrap
 " Reduce the delay when hitting ESC
 " http://www.johnhawthorn.com/2012/09/vi-escape-delays/
 " set ttimeout
-" set timeoutlen=10
-" set ttimeoutlen=10
+ set timeoutlen=1000
+ set ttimeoutlen=0
 " NOTE: this doesn't reduce the timeout under tmux, so use a tmux setting
 " instead:
 " http://superuser.com/questions/252214/slight-delay-when-switching-modes-in-vim-using-tmux-or-screen
@@ -93,9 +92,12 @@ set tabstop=4
 " highlight the current line
 " http://vim.wikia.com/wiki/Highlight_current_line
 set cursorline
+" highlight the current column
+set cursorcolumn
+
 set noswapfile
 
-"Set default text width to 80.
+" Set default text width to 80.
 setl tw=80
 
 " https://github.com/hallettj/jslint.vim/issues/38
@@ -153,3 +155,31 @@ nmap <leader>n :NERDTreeFind<CR>
 " https://github.etsycorp.com/tschneiter/vim-github
 " Link to file in github with lines hilighted
 map <leader>g :Github l<CR>
+
+" try to improve scroll performance:
+" https://stackoverflow.com/questions/307148/vim-scrolling-slowly
+set ttyfast
+set lazyredraw
+
+set relativenumber
+
+" fix indent guides error for js files
+" https://github.com/nathanaelkane/vim-indent-guides/issues/108
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  guibg=red   ctermbg=3
+hi IndentGuidesEven guibg=green ctermbg=4
+
+" allow gf to jump to symbols in etsyweb
+set path+=~/development/Etsyweb,
+            \~/development/Etsyweb/phplib/EtsyModel,
+            \~/development/Etsyweb/phplib,
+            \~/development/Etsyweb/templates,
+            \~/development/Etsyweb/htdocs/assets/js,
+            \~/development/Etsyweb/htdocs/assets/css,
+            \~/development/Etsyweb/phplib/Api,
+            \~/development/Etsyweb/phplib/Api/Resource
+set includeexpr=substitute(v:fname,'_','/','g').'.php'
+set suffixesadd+=.tpl
+set suffixesadd+=.js
+set suffixesadd+=.jsx
+set suffixesadd+=.mustache
