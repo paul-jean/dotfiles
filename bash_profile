@@ -11,10 +11,10 @@ pathadd ()
 alias ls='ls -hFG'  # add colors for filetype recognition
 alias vi='vim'
 alias lt='ls -ltrh'
-alias review='review -i -a r-and-l-engagement -c rl-engagement-eng'
+alias review='review -a r-and-l-engagement -c rl-engagement-eng'
 # alias postgres='postgres -D /usr/local/var/postgres'
 alias web='cd $HOME/development/Etsyweb'
-
+alias in='$HOME/development/bin/.in'
 # prompt
 # function redhat {
 # PS1="[\u@\h: \W]\\$ "
@@ -156,3 +156,56 @@ export EDITOR=vim
 eval $(~/development/bin/dbaliases)
 
 
+commits_per_week() {
+    git log --author="$1" --date=iso | grep Date | awk '{print $2}' | \
+        xargs -I {} date --date={} +%Y-%W | sort -nr | uniq -c
+}
+
+pr_comments_per_week() {
+    curl -s \
+    'https://github.etsycorp.com/api/v3/search/issues?q=+type:pr+commenter:pjletourneau&sort=created&order=desc' \
+    | jq '.items | .[] | select(.user.login != "pjletourneau") | .created_at' | \
+        xargs -I {} date --date={} +%Y-%W | uniq -c
+}
+
+
+function syncweb(){
+    #ssh_client="pjletourneau.prodvpn.etsy.com"
+    #ssh_client=$(echo $SSH_CLIENT | awk '{print $1}')
+    ssh_client="10.200.100.71"
+    echo "syncing etsyweb on vm to $USER on $ssh_client ..."
+    rsync -mravz --delete \
+        --exclude=".idea" --exclude=".git" --exclude=".phan" --exclude="*assets/dist*" \
+        --exclude="tmp" --exclude="translations" \
+        --include="*.php" --include="*.js" --include="*.scss" --include="*.css" \
+        --include="*.tpl" --include="*.mustache" --include=".htaccess" \
+        --include="*.jsx" \
+        --include="composer.*" \
+        --include="*/" \
+        --exclude="*" \
+        -e ssh /home/$USER/development/Etsyweb \
+        "$USER@$ssh_client":/Users/$USER/development
+}
+
+export -f syncweb
+
+function branch_pick() {
+    # TODO: get branch from github api call
+    branch="$1"
+    git co master
+    sha=$(git log | head -1 | awk '{print $2}')
+    echo "[branch_pick] sha for most recent commit on master: $sha"
+    echo "[branch_pick] switching to branch $branch"
+    git co $branch
+    echo "[branch_pick] cherry-picking commit from master to $branch ..."
+    git cherry-pick $sha --strategy-option=theirs
+    git st
+    echo "[branch_pick] pushing commit to $branch"
+    git push
+    echo "[branch_pick] checking out master ..."
+    git co master
+    git st
+}
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'

@@ -127,7 +127,9 @@ set background=dark
 colorscheme solarized
 
 set tags=tags;
-set autochdir
+" not compatible with fzf:
+" https://www.reddit.com/r/neovim/comments/4r8kfh/help_with_fzf_changing_directory/
+"set autochdir
 
 " SOX label on status line:
 " https://github.etsycorp.com/Engineering/vim-rodeo
@@ -183,3 +185,48 @@ set suffixesadd+=.tpl
 set suffixesadd+=.js
 set suffixesadd+=.jsx
 set suffixesadd+=.mustache
+
+" enable fzf
+set rtp+=~/.fzf
+Plugin 'junegunn/fzf.vim'
+" fzf shortcut
+" Use the correct file source, based on context
+function! ContextualFZF()
+    " Determine if inside a git repo
+    silent exec "!git rev-parse --show-toplevel"
+    redraw!
+
+    if v:shell_error
+        " Search in current directory
+        call fzf#run({
+          \'sink': 'e',
+          \'down': '40%',
+        \})
+    else
+        " Search in entire git repo
+        call fzf#run({
+          \'sink': 'e',
+          \'down': '40%',
+          \'source': 'git ls-tree --full-tree --name-only -r HEAD',
+        \})
+    endif
+endfunction
+"map <C-p> :call ContextualFZF()<CR>
+nnoremap <leader>t :call ContextualFZF()<CR>
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+
+" CtrlP mru first
+nnoremap <leader>b :CtrlPMRU<CR>
+
+" most recent files from fzf
+nnoremap <leader>r :FilesMru --tiebreak=end<cr>
+
+" turn off slowest php regex matchers:
+" https://github.com/StanAngeloff/php.vim/blob/7147336c05a853777befff35ad1737114b5fde86/README.md#configuration
+" https://github.com/StanAngeloff/php.vim/issues/68
+" set g:php_syntax_extensions_enabled=[]
